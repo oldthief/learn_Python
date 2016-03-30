@@ -3,7 +3,11 @@
 def hello():
 	print('Welcome!')
 
+import functools
+
 def decorator(myfunc,orifunc):
+	@functools.wraps(orifunc)
+	# Review the usage of @. Here is to wrapper.__name__=orifunc.__name__
 	def wrapper(*args,**kw):
 		myfunc()
 		return orifunc(*args,**kw)
